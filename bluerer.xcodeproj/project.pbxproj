@@ -14,6 +14,9 @@
 		36265C351CA14C6700C49FE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36265C331CA14C6700C49FE8 /* LaunchScreen.storyboard */; };
 		36265C401CA14C6800C49FE8 /* bluererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36265C3F1CA14C6800C49FE8 /* bluererTests.swift */; };
 		36265C4B1CA14C6800C49FE8 /* bluererUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36265C4A1CA14C6800C49FE8 /* bluererUITests.swift */; };
+		36265C591CA1505400C49FE8 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36265C581CA1505400C49FE8 /* EditViewController.swift */; };
+		368C9EE71CA5569900F06427 /* SABlurImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368C9EE51CA5569900F06427 /* SABlurImageView.swift */; };
+		368C9EE81CA5569900F06427 /* UIImage+BlurEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368C9EE61CA5569900F06427 /* UIImage+BlurEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		36265C461CA14C6800C49FE8 /* bluererUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bluererUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36265C4A1CA14C6800C49FE8 /* bluererUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bluererUITests.swift; sourceTree = "<group>"; };
 		36265C4C1CA14C6800C49FE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36265C581CA1505400C49FE8 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		368C9EE51CA5569900F06427 /* SABlurImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABlurImageView.swift; sourceTree = "<group>"; };
+		368C9EE61CA5569900F06427 /* UIImage+BlurEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+BlurEffect.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +103,11 @@
 		36265C291CA14C6700C49FE8 /* bluerer */ = {
 			isa = PBXGroup;
 			children = (
+				368C9EE51CA5569900F06427 /* SABlurImageView.swift */,
+				368C9EE61CA5569900F06427 /* UIImage+BlurEffect.swift */,
 				36265C2A1CA14C6700C49FE8 /* AppDelegate.swift */,
 				36265C2C1CA14C6700C49FE8 /* ViewController.swift */,
+				36265C581CA1505400C49FE8 /* EditViewController.swift */,
 				36265C2E1CA14C6700C49FE8 /* Main.storyboard */,
 				36265C311CA14C6700C49FE8 /* Assets.xcassets */,
 				36265C331CA14C6700C49FE8 /* LaunchScreen.storyboard */,
@@ -258,6 +267,9 @@
 			files = (
 				36265C2D1CA14C6700C49FE8 /* ViewController.swift in Sources */,
 				36265C2B1CA14C6700C49FE8 /* AppDelegate.swift in Sources */,
+				36265C591CA1505400C49FE8 /* EditViewController.swift in Sources */,
+				368C9EE81CA5569900F06427 /* UIImage+BlurEffect.swift in Sources */,
+				368C9EE71CA5569900F06427 /* SABlurImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +494,7 @@
 				36265C511CA14C6800C49FE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		36265C521CA14C6800C49FE8 /* Build configuration list for PBXNativeTarget "bluererTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +503,7 @@
 				36265C541CA14C6800C49FE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		36265C551CA14C6800C49FE8 /* Build configuration list for PBXNativeTarget "bluererUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +512,7 @@
 				36265C571CA14C6800C49FE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
