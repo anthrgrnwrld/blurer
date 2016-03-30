@@ -25,7 +25,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      */
     @IBAction func pressCameraButton(sender: AnyObject) {
         
-        print("\(NSStringFromClass(self.classForCoder)).\(__FUNCTION__) is called!")
+        print("\(NSStringFromClass(self.classForCoder)).\(#function) is called!")
         
     }
 
@@ -62,7 +62,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo: [String : AnyObject]) {
-        print("\(NSStringFromClass(self.classForCoder)).\(__FUNCTION__) is called!")
+        print("\(NSStringFromClass(self.classForCoder)).\(#function) is called!")
         
         //ImagePickerControllerで選択した写真にアクセス出来るか確認. 出来なければFatalError.
         guard let image = didFinishPickingMediaWithInfo[UIImagePickerControllerOriginalImage] as? UIImage else {
