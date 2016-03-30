@@ -66,7 +66,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //ここでtrueにする (viewDidAppearでfalseに戻す)
         is1st = true
         
-        let myPan = UIPanGestureRecognizer(target: self, action: "panGesture:")
+        let myPan = UIPanGestureRecognizer(target: self, action: #selector(EditViewController.panGesture(_:)))
         myPan.maximumNumberOfTouches = 1
         self.scrollView.addGestureRecognizer(myPan)
         
@@ -75,7 +75,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     override func viewDidLayoutSubviews() {
-        print("\(NSStringFromClass(self.classForCoder)).\(__FUNCTION__) is called!")
+        print("\(NSStringFromClass(self.classForCoder)).\(#function) is called!")
         //navigationBarを表示した時に写真が少し下にずれる問題の対策.
         self.scrollView.contentInset = UIEdgeInsetsZero
         
@@ -107,7 +107,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        print("\(NSStringFromClass(self.classForCoder)).\(__FUNCTION__) is called!")
+        print("\(NSStringFromClass(self.classForCoder)).\(#function) is called!")
         return self.displayView
     }
     
@@ -135,7 +135,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     internal func panGesture(sender: AnyObject) {
         
-        print("\(NSStringFromClass(self.classForCoder)).\(__FUNCTION__) is called!")
+        print("\(NSStringFromClass(self.classForCoder)).\(#function) is called!")
         
         guard let pan = sender as? UIPanGestureRecognizer else { return }
         
