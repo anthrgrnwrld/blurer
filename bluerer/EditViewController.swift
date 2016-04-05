@@ -54,6 +54,14 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         blurView.image = image
         blurView.addSubview(ev)                     //ぼかしViewをblurViewにAdd
         
+        // for AutoLayout
+        ev      .translatesAutoresizingMaskIntoConstraints = false
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        ev.topAnchor     .constraintEqualToAnchor(blurView.topAnchor     ).active = true
+        ev.leadingAnchor .constraintEqualToAnchor(blurView.leadingAnchor ).active = true
+        ev.trailingAnchor.constraintEqualToAnchor(blurView.trailingAnchor).active = true
+        ev.bottomAnchor  .constraintEqualToAnchor(blurView.bottomAnchor  ).active = true
+        
         //navigationControllerにアクセス出来るか確認. 出来なければFatalError.
         guard let navigationController = self.navigationController else {
             fatalError("navigationController is invalid.")
@@ -117,21 +125,47 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
      
      - parameter imageView : ぼかし画像の元画像
      */
-    private func createBlurView(imageView: UIImageView) -> SABlurImageView {
- 
-        let ev = SABlurImageView(image: imageView.image)
+    private func createBlurView(imageView: UIImageView) -> UIImageView {
         
-        ev.frame = imageView.frame
-        let ratio = imageView.image!.size.height / imageView.image!.size.width
-        ev.frame = CGRectMake(0, 0, imageView.frame.width, imageView.frame.width * ratio)
-        ev.center = imageView.center
+        guard let image = imageView.image else { fatalError() }
+ 
+        let filterImage = blurImage(image)
+        
+        let ev = UIImageView(image: filterImage)
+        
         ev.layer.masksToBounds = true
-        ev.addBlurEffect(100, times: 3)
+        ev.contentMode = .ScaleAspectFit
         
         return ev
  
     }
 
+    private func blurImage(image:UIImage) -> UIImage?
+    {
+        let context = CIContext(options: nil)
+        let inputImage = CIImage(CGImage: image.CGImage!)
+        
+        
+        let filter = CIFilter(name: "CIGaussianBlur")
+        filter?.setValue(inputImage, forKey: kCIInputImageKey)
+        filter?.setValue((40.0), forKey: kCIInputRadiusKey)
+        let outputImage = filter?.outputImage
+        
+        var cgImage:CGImageRef?
+        
+        if let asd = outputImage
+        {
+            let rect = CGRect(origin: CGPointZero, size: image.size)
+            cgImage = context.createCGImage(asd, fromRect: rect)
+        }
+        
+        if let cgImageA = cgImage
+        {
+            return UIImage(CGImage: cgImageA)
+        }
+        
+        return nil
+    }
     
     internal func panGesture(sender: AnyObject) {
         
@@ -178,6 +212,8 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let ratio = self.pictureView.image!.size.height / self.pictureView.image!.size.width
             self.pictureView.image?.drawInRect(CGRectMake(0, (self.pictureView.bounds.size.height - self.pictureView.bounds.size.width * ratio) / 2, self.pictureView.bounds.size.width, self.pictureView.bounds.size.width * ratio))
             
+//            red = 1.0
+//            alpha = 1.0
             color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
             bezierPath_.strokeWithBlendMode(blendMode, alpha: alpha) //透明色
             
