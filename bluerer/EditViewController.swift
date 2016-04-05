@@ -40,7 +40,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         scrollView.zoomScale = 1.0           // 表示時の拡大率
         
         //imageに値が入っているか確認. 入っていなければreturnする.
-        guard (image != nil) else {
+        guard let image = image else {
             print("Cannot access PhotoLibrary.")
             return
         }
@@ -48,20 +48,11 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
         pictureView.contentMode = .ScaleAspectFit   //contentModeの設定
         pictureView.image = image                   //pictureViewにimageを適応
-        
-        let ev = createBlurView(pictureView)        //ぼかしViewの作成
+ 
+        let blurImage = createblurImage(image)      //ぼかしViewの作成
         blurView.contentMode = .ScaleAspectFit      //contentModeの設定
-        blurView.image = image
-        blurView.addSubview(ev)                     //ぼかしViewをblurViewにAdd
-        
-        // for AutoLayout
-        ev      .translatesAutoresizingMaskIntoConstraints = false
-        blurView.translatesAutoresizingMaskIntoConstraints = false
-        ev.topAnchor     .constraintEqualToAnchor(blurView.topAnchor     ).active = true
-        ev.leadingAnchor .constraintEqualToAnchor(blurView.leadingAnchor ).active = true
-        ev.trailingAnchor.constraintEqualToAnchor(blurView.trailingAnchor).active = true
-        ev.bottomAnchor  .constraintEqualToAnchor(blurView.bottomAnchor  ).active = true
-        
+        blurView.image = blurImage                  //pictureViewにblurImageを適応
+
         //navigationControllerにアクセス出来るか確認. 出来なければFatalError.
         guard let navigationController = self.navigationController else {
             fatalError("navigationController is invalid.")
@@ -123,12 +114,12 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
     /**
-     引数のimageViewを基にぼかしViewを作成する
+     引数のimageを基にぼかしimageを作成する
      
      - parameter imageView : ぼかし画像の元画像
      - returns : ぼかし適応後画像を返す
      */
-    private func blurImage(image:UIImage) -> UIImage?
+    private func createblurImage(image:UIImage) -> UIImage?
     {
         let context = CIContext(options: nil)
         let inputImage = CIImage(CGImage: image.CGImage!)
