@@ -113,33 +113,21 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     }
     
-    
+ 
+    /**
+     写真の拡大縮小に対応
+    */
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         //print("\(NSStringFromClass(self.classForCoder)).\(#function) is called!")
         return self.displayView
     }
-    
 
     /**
      引数のimageViewを基にぼかしViewを作成する
      
      - parameter imageView : ぼかし画像の元画像
+     - returns : ぼかし適応後画像を返す
      */
-    private func createBlurView(imageView: UIImageView) -> UIImageView {
-        
-        guard let image = imageView.image else { fatalError() }
- 
-        let filterImage = blurImage(image)
-        
-        let ev = UIImageView(image: filterImage)
-        
-        ev.layer.masksToBounds = true
-        ev.contentMode = .ScaleAspectFit
-        
-        return ev
- 
-    }
-
     private func blurImage(image:UIImage) -> UIImage?
     {
         let context = CIContext(options: nil)
