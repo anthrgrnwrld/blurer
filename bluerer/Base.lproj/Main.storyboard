@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -73,7 +73,7 @@
                                                 <gestureRecognizers/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.91764705879999997" green="0.91372549020000005" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.16862745100000001" green="0.16862745100000001" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="a9i-q1-CAN" firstAttribute="centerY" secondItem="JOM-pB-xXt" secondAttribute="centerY" id="6Tr-Ud-e0n"/>
@@ -99,22 +99,79 @@
                                     <constraint firstAttribute="trailing" secondItem="wN0-Rc-qA6" secondAttribute="trailing" id="roj-2A-O4q"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ywZ-Fx-QC4">
+                                <rect key="frame" x="-1" y="543" width="376" height="124"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xkh-t2-0pd">
+                                        <rect key="frame" x="0.0" y="62" width="376" height="62"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="b0E-oN-sxh">
+                                                <rect key="frame" x="36" y="16" width="304" height="31"/>
+                                                <connections>
+                                                    <action selector="slideValue:" destination="d41-px-aMU" eventType="valueChanged" id="bur-Qx-IyX"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="F68-fK-ZcA"/>
+                                            <constraint firstItem="b0E-oN-sxh" firstAttribute="width" secondItem="Xkh-t2-0pd" secondAttribute="width" multiplier="0.8" id="Jlf-el-sPx"/>
+                                            <constraint firstItem="b0E-oN-sxh" firstAttribute="centerX" secondItem="Xkh-t2-0pd" secondAttribute="centerX" id="LoH-ZO-PJI"/>
+                                            <constraint firstItem="b0E-oN-sxh" firstAttribute="centerY" secondItem="Xkh-t2-0pd" secondAttribute="centerY" id="rvb-tE-zaL"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="F68-fK-ZcA"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="od1-qX-3NC">
+                                        <rect key="frame" x="110" y="18" width="30" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Size"/>
+                                        <connections>
+                                            <action selector="pressDrawSizeButton:" destination="d41-px-aMU" eventType="touchUpInside" id="4Cr-af-Mmu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbU-CX-yq1">
+                                        <rect key="frame" x="238" y="18" width="30" height="30"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Blur"/>
+                                        <connections>
+                                            <action selector="pressBlurLevelButton:" destination="d41-px-aMU" eventType="touchUpInside" id="WmM-NB-zmV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.85882352939999995" green="0.89019607840000003" blue="0.91372549020000005" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Xkh-t2-0pd" secondAttribute="bottom" id="BXT-xh-iuH"/>
+                                    <constraint firstItem="Xkh-t2-0pd" firstAttribute="height" secondItem="ywZ-Fx-QC4" secondAttribute="height" multiplier="1/2" id="NQh-Tc-gkH"/>
+                                    <constraint firstItem="Xkh-t2-0pd" firstAttribute="centerX" secondItem="ywZ-Fx-QC4" secondAttribute="centerX" id="gjq-7F-4RD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="ll8-la-Sdb" firstAttribute="width" secondItem="r5P-4q-JSj" secondAttribute="width" id="1yg-aB-JKf"/>
                             <constraint firstItem="ll8-la-Sdb" firstAttribute="centerX" secondItem="r5P-4q-JSj" secondAttribute="centerX" id="9EJ-eY-Skq"/>
+                            <constraint firstItem="gbx-vK-pmb" firstAttribute="top" secondItem="ywZ-Fx-QC4" secondAttribute="bottom" id="LEP-PD-A8S"/>
                             <constraint firstItem="ll8-la-Sdb" firstAttribute="centerY" secondItem="r5P-4q-JSj" secondAttribute="centerY" id="PZX-fs-IAS"/>
+                            <constraint firstItem="Xkh-t2-0pd" firstAttribute="width" secondItem="r5P-4q-JSj" secondAttribute="width" id="ZRT-lc-9nd"/>
+                            <constraint firstItem="ywZ-Fx-QC4" firstAttribute="width" secondItem="r5P-4q-JSj" secondAttribute="width" id="aES-t7-4dF"/>
+                            <constraint firstItem="ywZ-Fx-QC4" firstAttribute="height" secondItem="r5P-4q-JSj" secondAttribute="height" multiplier="1/5.4" id="qfW-GJ-6eQ"/>
                             <constraint firstItem="ll8-la-Sdb" firstAttribute="height" secondItem="r5P-4q-JSj" secondAttribute="height" id="uaf-Ns-JaE"/>
+                            <constraint firstItem="ywZ-Fx-QC4" firstAttribute="centerX" secondItem="r5P-4q-JSj" secondAttribute="centerX" id="vAO-xq-iRd"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="blurView" destination="a9i-q1-CAN" id="XuK-Kg-MxP"/>
+                        <outlet property="bottomView" destination="ywZ-Fx-QC4" id="hZx-gj-9FQ"/>
                         <outlet property="displayView" destination="wN0-Rc-qA6" id="n3Y-No-Lbd"/>
                         <outlet property="pictureView" destination="JOM-pB-xXt" id="dt7-LZ-xTi"/>
                         <outlet property="scrollView" destination="ll8-la-Sdb" id="TCA-PP-B24"/>
+                        <outlet property="slider" destination="b0E-oN-sxh" id="Nsu-4b-bAB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOw-LX-54x" userLabel="First Responder" sceneMemberID="firstResponder"/>

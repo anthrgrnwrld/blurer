@@ -44,7 +44,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
      ImagePickerControllerに遷移する
      */
     func shiftToImagePickerController() {
-        //print("\(NSStringFromClass(self.classForCoder)).\(__FUNCTION__) is called!")
+        //print("\(NSStringFromClass(self.classForCoder)).\(#function) is called!")
         
         //Libraryにアクセス出来るか確認. 出来なければreturn.
         guard UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) else {
@@ -55,6 +55,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let imagePickerController = UIImagePickerController()   //ImagePickerCOntrollerをインスタンス化
         imagePickerController.delegate = self                   //delegateを自身に設定
         imagePickerController.sourceType = .PhotoLibrary        //カメラとライブラリのどちらを表示するか. 今回はライブラリを表示
+
         
         //imagePickerControllerに遷移
         self.presentViewController(imagePickerController, animated: true, completion: nil)
@@ -75,7 +76,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
 
         editViewController.image = image                                //選択した写真の遷移後のviewControllerでの表示準備
+        
         picker.pushViewController(editViewController, animated: true)   //EditViewControllerへ遷移
+
         
     }
     
